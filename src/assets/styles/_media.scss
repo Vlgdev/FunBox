@@ -1,0 +1,33 @@
+@media (max-width: 1020px){
+  .content{
+    max-width: 750px;
+    &-item{
+      margin-bottom: 20px;
+      &:nth-child(3){
+        margin: 0 auto;
+      }
+    }
+  }
+} 
+
+@media (max-width: 690px){
+  .content{
+    padding: 0 10px;
+    &__inner{
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+    &-item{
+      &:nth-child(3){
+        margin: 0;
+      }
+      & + & {
+        margin-left: 0;
+      }
+      &__inner::after{
+        width: 88%;
+      }
+    }
+  }
+}

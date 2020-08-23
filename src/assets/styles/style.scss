@@ -1,0 +1,273 @@
+@import './global';
+@import './fonts';
+@import './vars';
+
+.wrapper {
+  min-height: 100vh;
+  padding: 30px 0;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  align-items: center;
+  background-image: url('../images/pattern.png');
+  box-shadow: 
+        inset 0 200px 180px -130px rgba(0, 0, 0, .7), 
+        inset 0 -200px 180px -130px rgba(0, 0, 0, .7);
+}
+
+.content {
+  max-width: 1150px;
+  width: 100%;
+  padding: 0 15px;
+  &__title {
+    color: #ffffff;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 25px;
+    font-family: 'Exo2.0-Thin';
+  }
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  &-item {
+    max-width: 320px;
+    color: #000;
+    width: 100%;
+    & + & {
+      margin-left: 15px;
+    }
+    &__box {
+      overflow: hidden;
+      position: relative;
+      border-radius: $itemBdRadius;
+      cursor: pointer;
+      &::before {
+        content: '';
+        width: 80px;
+        position: absolute;
+        height: 80px;
+        transform: rotate(45deg);
+        background: transparent;
+        box-shadow: 0 0 0 1000px #f2f2f2;
+        z-index: 0;
+        top: -40px;
+        margin: -4px;
+        left: -40px;
+        border-right: 4px solid $itemDefault;
+        transition: border-color .2s ease
+      }
+    }
+    &__inner {
+      width: 100%;
+      padding: 17px 57px 95px 40px;
+      min-height: 480px;
+      position: relative;
+      border-right: 4px solid $itemDefault;
+      border-bottom: 4px solid $itemDefault;
+      transition: border-color .2s ease;
+      border-left: 4px solid transparent;
+      border-top: 4px solid transparent;
+      border-radius: $itemBdRadius;
+      z-index: 1;
+      &::after,
+      &::before {
+        content: '';
+        position: absolute;
+        transition: border-color .2s ease;
+      }
+      &::after {
+        top: -4px;
+        right: -4px;
+        width: 276px;
+        height: 10%;
+        border-top: 4px solid $itemDefault;
+        border-right: 4px solid transparent;
+        border-radius: 0 $itemBdRadius 0 0;
+      }
+      &::before {
+        width: 10%;
+        border-radius: 0 0 0 $itemBdRadius;
+        border-bottom: 4px solid transparent;
+        left: -4px;
+        height: 436px;
+        bottom: -4px;
+        border-left: 4px solid $itemDefault;
+      }
+    }
+    &__subtitle {
+      color: #666666;
+      margin-bottom: 12px;
+      font-size: 16px;
+      &.cancel{
+        color: #e62e7a;
+      }
+    }
+    &__firm {
+      font-size: 48px;
+      font-weight: 700;
+    }
+    &__filling {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    &__list {
+      font-size: 14px;
+      line-height: 16px;
+      color: #666666;
+      span {
+        font-weight: 700;
+      }
+    }
+    &__weight {
+      position: absolute;
+      right: 11px;
+      bottom: 11px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: $itemDefault;
+      transition: background .2s ease;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      &-value {
+        font-size: 38px;
+        line-height: 30px;
+      }
+      &-unit {
+        font-size: 20px;
+      }
+    }
+    &__bg {
+      position: absolute;
+      bottom: -93px;
+      left: -26px;
+      z-index: 0;
+    }
+    &__descr {
+      color: #ffffff;
+      text-align: center;
+      font-size: 13px;
+      line-height: 16px;
+      margin-top: 15px;
+      &-btn {
+        border-bottom: 1px dashed $itemDefault;
+        transition: border-color .2s ease;
+        &:hover {
+          border-bottom-color: $itemHover;
+        }
+      }
+      &-btn,
+      span {
+        color: $itemDefault;
+        transition: color .2s ease;
+        &:hover {
+          color: $itemHover;
+        }
+      }
+    }
+    &__box.hovered {
+      &::before {
+        border-color: $itemHover;
+      }
+      .content-item {
+        &__inner {
+          border-right-color: $itemHover;
+          border-bottom-color: $itemHover;
+          &::after {
+            border-top-color: $itemHover;
+          }
+          &::before {
+            border-left-color: $itemHover;
+          }
+        }
+        &__weight {
+          background: $itemHover;
+        }
+      }
+    }
+    &.selected {
+      .content-item {
+        &__box::before {
+          border-color: $itemSelected;
+        }
+        &__inner {
+          border-right-color: $itemSelected;
+          border-bottom-color: $itemSelected;
+          &::after {
+            border-top-color: $itemSelected;
+          }
+          &::before {
+            border-left-color: $itemSelected;
+          }
+        }
+        &__weight {
+          background: $itemSelected;
+        }
+        &__box.hovered {
+          &::before {
+            border-color: $itemSelectedHover;
+          }
+          .content-item {
+            &__inner {
+              border-right-color: $itemSelectedHover;
+              border-bottom-color: $itemSelectedHover;
+              &::after {
+                border-top-color: $itemSelectedHover;
+              }
+              &::before {
+                border-left-color: $itemSelectedHover;
+              }
+            }
+            &__weight {
+              background: $itemSelectedHover;
+            }
+          }
+        }
+      }
+    }
+    &.disabled {
+      color: $itemDisabled;
+      .content-item {
+        &__box {
+          cursor: default;
+          &::before {
+            border-color: $itemDisabled;
+          }
+        }
+        &__inner {
+          border-right-color: $itemDisabled;
+          border-bottom-color: $itemDisabled;
+          &::after {
+            border-top-color: $itemDisabled;
+          }
+          &::before {
+            border-left-color: $itemDisabled;
+          }
+        }
+        &__subtitle,
+        &__list {
+          color: $itemDisabled;
+        }
+        &__weight {
+          background: $itemDisabled;
+        }
+        &__bg {
+          opacity: 0.5;
+        }
+        &__descr {
+          color: #ffff66;
+        }
+      }
+    }
+  }
+}
+
+@import './media';

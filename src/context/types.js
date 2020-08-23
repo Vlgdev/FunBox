@@ -1,0 +1,3 @@
+export const TOGGLE_PRODUCT = 'TOGGLE_PRODUCT'
+export const ENTER_PRODUCT = 'ENTER_PRODUCT'
+export const LEAVE_PRODUCT = 'LEAVE_PRODUCT'
